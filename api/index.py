@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file
 import os
 import joblib
 
@@ -17,10 +17,9 @@ vectorizer = joblib.load(
 
 @app.route("/", methods=["GET"])
 def home():
-    return jsonify({
-        "status": "running",
-        "message": "Spam Email Classifier API"
-    })
+    return send_file(
+        os.path.join(BASE, "index.html")
+    )
 
 
 @app.route("/api/predict", methods=["POST"])
@@ -39,13 +38,18 @@ def predict():
 
     prediction = model.predict(features)[0]
 
-    result = "SPAM" if str(prediction).lower() == "spam" else "HAM"
+    result = (
+        "SPAM"
+        if str(prediction).lower() == "spam"
+        else "HAM"
+    )
 
     response = {
         "prediction": result
     }
 
     if hasattr(model, "predict_proba"):
+
         probabilities = model.predict_proba(features)[0]
 
         response["confidence"] = round(
