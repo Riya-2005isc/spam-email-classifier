@@ -91,7 +91,22 @@ The trained model and vectorizer are saved using Joblib and loaded by the API du
 * Bag of Words
 * Multinomial Naive Bayes
 * Vercel
+# 📧 Spam Email Classifier
 
+An NLP-based machine learning application that classifies emails as **Spam** or **Ham**.
+
+## 🚀 Live Demo
+
+👉 **[Try the Spam Email Classifier] (https://spam-email-classifier-nvy4.vercel.app/)**
+
+## 🛠️ Technologies Used
+
+- Python
+- NLP
+- Machine Learning
+- TF-IDF
+- Streamlit
+- Vercel
 ## Author
 
 Riya Rathod
